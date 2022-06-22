@@ -28,6 +28,7 @@ $(".btn").on("click", function() {
 
 function nextSequence() {
 
+    userClickedPattern = [];
     level++;
     $("#level-title").text("Level " + level);
 
@@ -74,6 +75,13 @@ function checkAnswer(currentLevel) {
       } else {
   
         console.log("wrong");
+
+        playSound("wrong");
+        $("body").addClass("game-over");
+        setTimeout(function() {
+            $("body").removeClass("game-over");
+            $("#level-title").text("Game Over, Press Any Key to Restart");
+        }, 200);
   
       }
 
